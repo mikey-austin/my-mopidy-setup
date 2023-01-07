@@ -1,5 +1,5 @@
 # https://github.com/mopidy/mopidy/releases
-Mopidy==3.3.0
+#Mopidy==3.4.1 <- just get from apt since we are importing the repo anyways
 
 # https://github.com/jaedb/Iris/releases
 #Mopidy-Iris==3.64.0
@@ -14,4 +14,8 @@ Mopidy-Podcast==3.0.1
 Mopidy-Scrobbler==2.0.1
 
 # https://github.com/mopidy/mopidy-spotify/releases
-#Mopidy-Spotify==4.1.1
+Mopidy-Spotify==4.1.1
+
+# My used plugins
+Mopidy-YTMusic==0.3.8
+Mopidy-RadioNet

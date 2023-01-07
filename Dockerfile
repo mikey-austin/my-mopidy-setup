@@ -2,10 +2,12 @@ ARG BUILD_FROM=debian:buster-slim
 
 FROM $BUILD_FROM
 
-RUN apt-get update \
+RUN mkdir -p /usr/local/share/keyrings \
+ && apt-get update \
  && apt-get install -y wget \
                        gnupg2 \
- && wget -q -O - https://apt.mopidy.com/mopidy.gpg | apt-key add - \
+ && wget -q -O /usr/local/share/keyrings/mopidy-archive-keyring.gpg \
+    https://apt.mopidy.com/mopidy.gpg \
  && wget -q -O /etc/apt/sources.list.d/mopidy.list https://apt.mopidy.com/buster.list
 
 RUN apt-get update \
@@ -26,6 +28,7 @@ RUN apt-get update \
                        python3-wheel \
                        libasound2-dev \
                        libspotify-dev \
+                       mopidy \
  && rm -rf /var/lib/apt/lists/*
 
 # Add git to get some Mopidy stuff straight from Github
@@ -40,16 +43,10 @@ RUN pip3 install -r requirements.txt \
 
 RUN update-ca-certificates --fresh
 
-COPY mopidy.conf /root/.config/mopidy/
-
 # https://discourse.mopidy.com/t/spotify-login-error-errortype-unable-to-contact-server-8/4979/19
 RUN echo "104.154.126.229 ap.spotify.com" >> /etc/hosts
 
-RUN mkdir /root/music
-
-VOLUME ["/root/.cache/mopidy", "/root/.local/share/mopidy", "/root/music"]
-
-ENV TZ=Europe/London
+ENV TZ=Europe/Amsterdam
 
 EXPOSE 6600 6680
 
