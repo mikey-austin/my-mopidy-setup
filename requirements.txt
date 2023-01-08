@@ -5,17 +5,20 @@
 #Mopidy-Iris==3.64.0
 
 # https://github.com/mopidy/mopidy-mpd/releases
-Mopidy-MPD==3.3.0
+Mopidy-MPD
 
 # https://github.com/tkem/mopidy-podcast/tags
-Mopidy-Podcast==3.0.1
+Mopidy-Podcast
 
 # https://github.com/mopidy/mopidy-scrobbler/releases
-Mopidy-Scrobbler==2.0.1
+Mopidy-Scrobbler
 
 # https://github.com/mopidy/mopidy-spotify/releases
-Mopidy-Spotify==4.1.1
+Mopidy-Spotify
 
 # My used plugins
-Mopidy-YTMusic==0.3.8
+Mopidy-YTMusic
 Mopidy-RadioNet
+ytmusicapi
+requests>=2.22.0
+idna>=2.8.0

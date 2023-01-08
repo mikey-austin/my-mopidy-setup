@@ -38,7 +38,7 @@ RUN apt-get update \
 
 COPY requirements.txt requirements.txt
 
-RUN pip3 install -r requirements.txt \
+RUN echo 4 && pip3 install -r requirements.txt \
  && rm -rf ~/.cache/pip
 
 RUN update-ca-certificates --fresh
