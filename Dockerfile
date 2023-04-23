@@ -1,14 +1,13 @@
-ARG BUILD_FROM=debian:buster-slim
+ARG BUILD_FROM=debian:bullseye-slim
 
 FROM $BUILD_FROM
 
-RUN mkdir -p /usr/local/share/keyrings \
- && apt-get update \
- && apt-get install -y wget \
-                       gnupg2 \
- && wget -q -O /usr/local/share/keyrings/mopidy-archive-keyring.gpg \
-    https://apt.mopidy.com/mopidy.gpg \
- && wget -q -O /etc/apt/sources.list.d/mopidy.list https://apt.mopidy.com/buster.list
+RUN apt-get update \
+ && apt-get install -y wget gnupg2 \
+ && mkdir -p /etc/apt/keyrings \
+ && wget -q -O /etc/apt/keyrings/mopidy-archive-keyring.gpg \
+        https://apt.mopidy.com/mopidy.gpg \
+ && wget -q -O /etc/apt/sources.list.d/mopidy.list https://apt.mopidy.com/bullseye.list
 
 RUN apt-get update \
  && apt-get install -y libffi-dev \
